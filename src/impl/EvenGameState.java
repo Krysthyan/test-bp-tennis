@@ -1,5 +1,6 @@
 package impl;
 
+import main.Player;
 import main.ScoreMapper;
 import main.GameState;
 
@@ -20,23 +21,19 @@ public class EvenGameState implements GameState {
 
     @Override
     public GameState playerOneScored() {
-        return validateConditions(points);
+        return validateConditions(points, Player.ONE);
     }
 
     @Override
     public GameState playerTwoScored() {
-        return validateConditions(points);
+        return validateConditions(points, Player.TWO);
     }
 
-    private GameState validateConditions(int points) {
+    private GameState validateConditions(int points, Player player) {
         int incrementPoints = points + 1;
         if (incrementPoints == 4) {
-            return new AdvantageGameState();
+            return new AdvantageGameState(player);
         }
         return new UnEvenGameState(points, incrementPoints);
     }
-
-
-
-
 }
