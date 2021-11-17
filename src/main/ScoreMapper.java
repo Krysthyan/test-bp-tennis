@@ -9,7 +9,7 @@ public class ScoreMapper {
             case 2: return "Thirty";
             case 3: return "Forty";
         }
-        throw new IllegalArgumentException("__Score: " + score + "___");
+        throw new IllegalArgumentException("Score: " + score + "");
     }
 
 }

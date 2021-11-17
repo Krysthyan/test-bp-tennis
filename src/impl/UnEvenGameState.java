@@ -22,11 +22,22 @@ public class UnEvenGameState implements GameState {
 
   @Override
   public GameState playerOneScored() {
-    return null;
+    return validateConditions(this.pointsPlayer1, this.pointsPlayer2);
   }
 
   @Override
   public GameState playerTwoScored() {
-    return null;
+    return validateConditions(this.pointsPlayer2, this.pointsPlayer1);
+  }
+
+  private GameState validateConditions(int pointsOne, int pointTwo) {
+    int pointsIncrementPlayer = pointsOne + 1;
+    if (pointsIncrementPlayer == 4)
+      return new WinPlayerGameState();
+
+    if (pointsIncrementPlayer == pointTwo)
+      return new EvenGameState();
+
+    return new UnEvenGameState(pointsIncrementPlayer, pointTwo);
   }
 }
