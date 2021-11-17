@@ -36,7 +36,7 @@ public class UnEvenGameState implements GameState {
       return new WinPlayerGameState();
 
     if (pointsIncrementPlayer == pointTwo)
-      return new EvenGameState();
+      return new EvenGameState(pointsIncrementPlayer);
 
     return new UnEvenGameState(pointsIncrementPlayer, pointTwo);
   }
